@@ -15,13 +15,37 @@ const Users = () => {
       .catch(err => console.error('Error fetching users:', err));
   }, []);
   return (
-    <div>
-      <h2>Users</h2>
-      <ul>
-        {users.map((user, idx) => (
-          <li key={user.id || idx}>{user.name || JSON.stringify(user)}</li>
-        ))}
-      </ul>
+    <div className="row justify-content-center">
+      <div className="col-md-10">
+        <div className="card shadow mb-4">
+          <div className="card-body">
+            <h2 className="card-title mb-4 display-6 text-warning">Users</h2>
+            <table className="table table-striped table-bordered">
+              <thead className="table-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.length === 0 ? (
+                  <tr><td colSpan="3" className="text-center">No users found.</td></tr>
+                ) : (
+                  users.map((user, idx) => (
+                    <tr key={user.id || idx}>
+                      <th scope="row">{idx + 1}</th>
+                      <td>{user.name || '-'}</td>
+                      <td>{user.email || JSON.stringify(user)}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+            <button className="btn btn-warning mt-3">Add User</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

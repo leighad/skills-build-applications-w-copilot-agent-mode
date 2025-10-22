@@ -31,7 +31,23 @@ function App() {
           <Route path="/teams" element={<Teams />} />
           <Route path="/users" element={<Users />} />
           <Route path="/workouts" element={<Workouts />} />
-          <Route path="/" element={<h2>Welcome to Octofit Tracker!</h2>} />
+          <Route path="/" element={
+            <div className="row justify-content-center">
+              <div className="col-md-8">
+                <div className="card shadow mb-4">
+                  <div className="card-body text-center">
+                    <h1 className="card-title display-4 mb-3">Welcome to Octofit Tracker!</h1>
+                    <p className="card-text lead">Track your fitness, join teams, and compete on the leaderboard.</p>
+                    <Link to="/activities" className="btn btn-primary m-2">View Activities</Link>
+                    <Link to="/leaderboard" className="btn btn-success m-2">Leaderboard</Link>
+                    <Link to="/teams" className="btn btn-info m-2">Teams</Link>
+                    <Link to="/users" className="btn btn-warning m-2">Users</Link>
+                    <Link to="/workouts" className="btn btn-danger m-2">Workouts</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          } />
         </Routes>
       </div>
     </Router>
